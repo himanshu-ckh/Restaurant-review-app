@@ -1,14 +1,10 @@
 /* ==============Responsive===========*/
-@media screen and(max-width: 920px) {
-  .filter-options, .restaurants-list {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 30px;
-  }
-}
-@media screen and(max-width: 1200px) {
-  #restaurants-list li {
-    width: 400px;
-  }
+
+@media screen and (max-width: 920px) {
+	.restaurants-list {
+		width: 100%;
+		display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-gap: 30px;
+    }
 }
