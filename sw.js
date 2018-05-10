@@ -1,5 +1,5 @@
 /**
-*Adapted from https://github.com/GoogleChrome/samples
+*Adapted from https://www.sitepoint.com/getting-started-with-service-workers/
 *Cahe name
 */
 const CACHENAME = 'restaurant-cache';
@@ -7,6 +7,7 @@ const CACHENAME = 'restaurant-cache';
 *All the local urls which we want to add to the cache
 */
 const CACHENAME_URLS = [
+'/',
 '/index.html',
 '/restaurant.html',
 '/css/styles.css',
@@ -29,11 +30,14 @@ const CACHENAME_URLS = [
 /**
 *Install service worker to take care of all the resources of the need
 */
-self.addEventListener('install', function(event) {
-  event.waitUntil(caches.open(CACHENAME)
-    .then(function(cache) {
-      cache.addAll(CACHENAME_URLS);
-  }));
+self.addEventListener('install', function (event) {
+    event.waitUntil(
+        caches.open(CACHENAME)
+            .then(function (cache) {
+                console.log('Opened cache');
+                return cache.addAll(CACHENAME_URLS);
+            })
+    );
 });
 
 /**
