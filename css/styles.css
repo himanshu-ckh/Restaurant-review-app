@@ -296,13 +296,3 @@ nav h1 a {
 #restaurant-hours td {
   color: #666;
 }
-
-/* ==============Responsive===========*/
-@media screen and(max-width: 920px) {
-  .filter-options, .restaurants-list {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 30px;
-  }
-}
