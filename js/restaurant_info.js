@@ -58,9 +58,14 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  /*set alt attribute to image*/
+  image.setAttribute("alt", restaurant.alt);
+  /*insert the image in normal tab order*/
+  image.setAttribute("tabindex", 0);
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
+  cuisine.setAttribute("alt", 'cuisine type of restaurant selected');
 
   // fill operating hours
   if (restaurant.operating_hours) {
@@ -87,6 +92,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
     row.appendChild(time);
 
     hours.appendChild(row);
+    hours.setAttribute("tabindex", 0);
   }
 }
 
@@ -117,13 +123,16 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = (review) => {
   const li = document.createElement('li');
+  /*insert the reviews in normal tab order*/
+  li.setAttribute("tabindex", 0);
   const name = document.createElement('p');
   name.innerHTML = review.name;
   li.appendChild(name);
 
   const date = document.createElement('p');
-  date.innerHTML = review.date;
+  date.innerHTML =review.date;
   li.appendChild(date);
+
 
   const rating = document.createElement('p');
   rating.innerHTML = `Rating: ${review.rating}`;
