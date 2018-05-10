@@ -70,6 +70,10 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
 /**
  * Initialize Google map, called from HTML.
  */
+
+ /**
+ * Focus on map is at last .
+ */
 window.initMap = () => {
   let loc = {
     lat: 40.722216,
@@ -136,11 +140,15 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  * Create restaurant HTML.
  */
 createRestaurantHTML = (restaurant) => {
+  /*tab index to start from 5*/
+  let index = 5;
   const li = document.createElement('li');
 
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  /*set alt attribute to images*/
+  image.setAttribute("alt", restaurant.alt);
   li.append(image);
 
   const name = document.createElement('h1');
@@ -157,7 +165,11 @@ createRestaurantHTML = (restaurant) => {
 
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
+  more.setAttribute("aria-label", restaurant.name + " View Details");
   more.href = DBHelper.urlForRestaurant(restaurant);
+  /*tab index added for the links to view details of the restaurants*/
+  more.setAttribute("tabindex", index);
+  index= index + 1;
   li.append(more)
 
   return li
